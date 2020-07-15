@@ -83,11 +83,11 @@ function draw() {
   } else if (mic_is_loaded) {
     vol = mic.getLevel();
   } else {
-    vol = 0;
+    vol = 0.2;
   }
 
   if (shrinking) {
-    const dr = -1;
+    const dr = map(vol, 0, 1, -0.01, -4);
 
     min_r += dr;
   	max_r += dr;
@@ -101,7 +101,7 @@ function draw() {
       shrinking = false;
     }
   } else {
-    const dr = 1;
+    const dr = map(0.2, 0, 1, 0.01, 4);
 
     min_r += dr;
     max_r += dr * 2;
@@ -123,7 +123,7 @@ function draw() {
   		a -= TWO_PI;
   	}
 
-  	let r = noise(a, t * 0.05, vol * 10);
+  	let r = noise(a, t * 0.05, vol * 5);
   	r = map(r, 0, 1, min_r, max_r);
 
   	const x = cos(a) * r;
