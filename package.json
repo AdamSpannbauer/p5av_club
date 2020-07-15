@@ -1,0 +1,24 @@
+{
+  "name": "p5av_club",
+  "version": "1.0.0",
+  "description": "An applet for visulizing audio with p5js animations",
+  "main": "sketch.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AdamSpannbauer/p5av_club.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AdamSpannbauer/p5av_club/issues"
+  },
+  "homepage": "https://github.com/AdamSpannbauer/p5av_club#readme",
+  "devDependencies": {
+    "eslint": "^7.4.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.0"
+  }
+}
