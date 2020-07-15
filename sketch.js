@@ -20,6 +20,12 @@ let t = 0;
 let shrinking = true;
 
 function handle_file(file) {
+  if (audio_is_loaded) {
+    audio.stop();
+    audio = null;
+    audio_is_loaded = false;
+  }
+
   if (file.type === 'audio') {
     audio = loadSound(file.data, start_uploaded_audio);
   } else {
@@ -42,16 +48,23 @@ function start_uploaded_audio() {
 }
 
 function start_mic_audio() {
-  mic_is_loaded = true;
-  
-  mic = new p5.AudioIn();
-  mic.start();
+  if (mic_is_loaded) {
+    mic_is_loaded = false;
+    use_mic_btn.html('Use mic audio input');
+  } else {
+    mic_is_loaded = true;
 
-  background(0, 71, 100);
+    mic = new p5.AudioIn();
+    mic.start();
 
-  t = 0;
-  min_r = 150;
-  max_r = 250;
+    background(0, 71, 100);
+
+    t = 0;
+    min_r = 150;
+    max_r = 250;
+
+    use_mic_btn.html('Stop mic');
+  }
 }
 
 function setup() {
@@ -61,7 +74,7 @@ function setup() {
   upload_btn = createFileInput(handle_file);
   upload_btn.position(0, 513);
 
-  use_mic_btn = createButton('Use mic audio input', handle_file);
+  use_mic_btn = createButton('Use mic audio input');
   use_mic_btn.position(0, 550);
   use_mic_btn.mousePressed(start_mic_audio);
 
@@ -123,7 +136,7 @@ function draw() {
   		a -= TWO_PI;
   	}
 
-  	let r = noise(a, t * 0.05, vol * 5);
+  	let r = noise(a, t * 0.05, vol * 3);
   	r = map(r, 0, 1, min_r, max_r);
 
   	const x = cos(a) * r;
