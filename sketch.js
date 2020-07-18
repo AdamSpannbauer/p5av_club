@@ -19,6 +19,10 @@ let vol;
 let t = 0;
 let shrinking = true;
 
+const bg_color = 0
+const circle_fill = 30
+const circle_stroke = 255
+
 function handle_file(file) {
   if (audio_is_loaded) {
     audio.stop();
@@ -40,7 +44,7 @@ function start_uploaded_audio() {
   audio.loop();
   amp = new p5.Amplitude();
 
-  background(0, 71, 100);
+  background(bg_color);
 
   t = 0;
   min_r = 150;
@@ -57,7 +61,7 @@ function start_mic_audio() {
     mic = new p5.AudioIn();
     mic.start();
 
-    background(0, 71, 100);
+    background(bg_color);
 
     t = 0;
     min_r = 150;
@@ -78,11 +82,11 @@ function setup() {
   use_mic_btn.position(0, 550);
   use_mic_btn.mousePressed(start_mic_audio);
 
-  background(0, 71, 100);
-  stroke(20);
+  background(bg_color);
+  stroke(circle_stroke);
   strokeWeight(1);
 
-  fill(250, 100, 100);
+  fill(circle_fill);
 }
 
 function draw() {
