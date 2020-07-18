@@ -19,8 +19,8 @@ let vol;
 let t = 0;
 let shrinking = true;
 
-const bg_color = 0
-const circle_fill = 30
+const bg_color = 20
+const circle_fill = 0
 const circle_stroke = 255
 
 function handle_file(file) {
